@@ -1,2 +1,3 @@
-# 🔥 Trying to complete my first portfolio lol
+I’m a versatile tech enthusiast with a passion for building and creating across multiple disciplines. My portfolio showcases a wide range of projects—from coding web and software applications, to developing IoT systems, and even designing custom PCBs. I thrive on solving real-world problems with technology, whether it's through scripting logic, connecting hardware, or prototyping innovative electronics.
 
+With a strong foundation in both software and hardware, I’m always exploring new tools and technologies to push the boundaries of what I can create. Whether it's writing efficient code, configuring microcontrollers, or laying out a printed circuit board, I bring attention to detail and a passion for learning into everything I do.
