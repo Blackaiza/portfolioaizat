@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IoT Monitoring System</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/shah.png" type="image/x-icon" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">Aizat Hamizan</a>
+      <i class='bx bx-moon change-theme' id='theme-button'></i>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <section class="about section" id="about">
+      <span class="section__subtitle">What I Do</span>
+      <h2 class="section__title">Soil Feeder + Telegram Bot</h2>
+
+      <!-- Swiper Slider -->
+      <div class="swiper droneSwiper" style="max-width: 768px; margin: 2rem auto;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/SoilFeeder1.jpeg" class="about__img" alt="IoT 1" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/SoilFeeder2.jpeg" class="about__img" alt="IoT 2" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/SoilFeeder3.png" class="about__img" alt="IoT 3" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/SoilFeeder4.jpeg" class="about__img" alt="IoT 3" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/SoilFeeder5.jpeg" class="about__img" alt="IoT 3" />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="about__container container" style="margin-top: 2rem;">
+      <div class="about__data">
+            <div class="about__info">
+              <span class="about__subtitle">#IoT #Automation #LoRa #ESP32 #Blynk #Telegram</span>
+            </div>
+
+            <!-- Telegram Button -->
+            <div style="margin-top: 2rem;">
+              <a href="https://t.me/UKMSOILFEEDER_bot" target="_blank" class="button" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bxl-telegram' style="font-size: 1.2rem;"></i> Soil Feeder Bot Telegram
+              </a>
+            </div>
+
+            <!-- Arduino Code Buttons -->
+            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+              <a href="codes/Master.ino" download class="button" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> Master
+              </a>
+
+              <a href="codes/Master-Lora.ino" download class="button" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> Master-Lora
+              </a>
+
+              <a href="codes/Lora.ino" download class="button" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> Lora
+              </a>
+            </div>
+            <br>
+
+            <p class="about__description">
+              This project is a fully automated system for filling soil into polybags,
+              designed to reduce manual labor and increase consistency in agriculture 
+              tasks. It is built using <strong>3 units of ESP32</strong> that work together 
+              over <strong>LoRa communication</strong> to collect, control and transmit real-time data.
+            </p>
+
+            <p class="about__description">
+              The system features an <strong>ultrasonic sensor</strong> to detect soil height in each polybag, a <strong>weight sensor</strong> to ensure proper soil amount, and a <strong>liquid crystal display</strong> for status visualization. Users interact with the system using a <strong>keypad</strong>, and a <strong>servo motor</strong> handles the soil dispensing gate.
+            </p>
+
+            <p class="about__description">
+              Two <strong>DC motors</strong> manage the soil transport mechanism, powered through an <strong>AC to DC converter</strong> for efficient power supply. Critical system details such as weight, fill status, and alerts are transmitted via <strong>LoRa</strong> to a remote ESP32 unit.
+            </p>
+
+            <p class="about__description">
+              For monitoring and control, the system is integrated with <strong>Blynk IoT</strong> for mobile dashboard feedback and control, and <strong>Telegram Bot</strong> for instant alert messaging.
+            </p>
+
+            <p class="about__description">
+              This project challenged me to work with multiple communication protocols, sensor fusion, and real-time system control, while implementing energy-efficient and user-friendly IoT features.
+            </p>
+
+            <!-- YouTube Video Section -->
+            <!-- <div style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0;">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="Polybag Filling Demo 1" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Polybag Filling Demo 2" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+            </div> -->
+
+            <!-- Local Video Section -->
+             <h3 style="text-align: center; color: var(--title-color); margin-top: 1rem;">📽️ Soil Feeder Demo</h3>
+
+            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem;">
+              <video controls style="width: 100%; max-width: 768px; margin: 0 auto; border-radius: 12px;">
+                <source src="assets\video\SoilFeederVideo1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+             <h4 style="text-align: center; color: var(--title-color); margin-top: 1rem;">Lora Demo</h4>
+              <video controls style="width: 100%; max-width: 768px; margin: 0 auto; border-radius: 12px;">
+                <source src="assets\video\SoilFeederVideo2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <br>
+            <a href="index.html" class="button">Back to Portfolio</a>
+          </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    // Swiper Config
+    var swiper = new Swiper(".droneSwiper", {
+      loop: true,
+      grabCursor: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // Theme Toggle
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+    const darkTheme = 'light-theme';
+    const iconTheme = 'bx-sun';
+
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+
+    const getCurrentTheme = () => body.classList.contains(darkTheme) ? 'light' : 'dark';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
+
+    if (selectedTheme) {
+      body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+  </script>
+
+</body>
+</html>

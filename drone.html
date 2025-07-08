@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Hobby Blog</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/shah.png" type="image/x-icon" />
+</head>
+<body class="" id="body">
+
+  <!--=============== HEADER ===============-->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">Aizat Hamizan</a>
+      <i class='bx bx-moon change-theme' id='theme-button'></i>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="about section" id="about">
+      <span class="section__subtitle">What I Do</span>
+      <h2 class="section__title">FPV Drone Build</h2>
+
+      <!-- Swiper Slider -->
+      <div class="swiper droneSwiper" style="max-width: 768px; margin: 2rem auto;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/drone.jpeg" class="about__img" alt="Drone 1" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/drone2.jpeg" class="about__img" alt="Drone 2" />
+          </div>
+          <div class="swiper-slide" style="text-align: center;">
+            <img src="assets/img/drone3.jpeg" class="about__img" alt="Drone 3" />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="about__container container" style="margin-top: 2rem;">
+        <div class="about__data">
+          <div class="about__info">
+            <span class="about__subtitle">#Blog #Drone #FPV #DIY #Electronics</span>
+          </div>
+
+          <p class="about__description">
+            Building my first <strong>FPV (First Person View) drone</strong> was both an exciting and technically enriching experience. This project allowed me to apply practical engineering concepts while honing my hands-on skills in electronics, assembly, and flight configuration.
+          </p>
+
+          <p class="about__description">
+            The build began with a <strong>4-in-1 ESC</strong>, <strong>F4 flight controller</strong>, and <strong>VTX</strong>. Soldering was performed with precision, ensuring clean joints for signal and power reliability.
+          </p>
+
+          <p class="about__description">
+            I used <strong>2207 2450KV brushless motors</strong> powered by a <strong>4S 1300mAh LiPo battery</strong>, secured with an XT60 connector and filtered using a low-ESR capacitor.
+          </p>
+
+          <p class="about__description">
+            The FPV system features a <strong>RunCam Nano camera</strong> and a <strong>25–800mW VTX</strong> paired with Betaflight for flight configuration and tuning.
+          </p>
+
+          <ul class="about__description" style="margin-left: 1.5rem;">
+            <li>📦 Frame assembly with carbon fiber and standoffs</li>
+            <li>🔧 Optimized antenna placement</li>
+            <li>🧰 Diagnosed ESC desync and signal issues</li>
+            <li>🔋 Ensured battery safety with proper charging</li>
+            <li>📶 Tuned VTX channels for clean frequency separation</li>
+          </ul>
+
+          <p class="about__description">
+            This hands-on project enhanced my confidence in system integration, power design, and radio-frequency communication. Seeing it fly was a proud moment of engineering achievement.
+          </p>
+
+          <a href="index.html" class="button">Back to Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    // Swiper Config
+    var swiper = new Swiper(".droneSwiper", {
+      loop: true,
+      grabCursor: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // Theme Toggle
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+    const darkTheme = 'light-theme';
+    const iconTheme = 'bx-sun';
+
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+
+    const getCurrentTheme = () => body.classList.contains(darkTheme) ? 'light' : 'dark';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
+
+    if (selectedTheme) {
+      body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+  </script>
+
+</body>
+</html>
