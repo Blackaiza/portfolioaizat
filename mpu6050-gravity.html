@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Why MPU6050 Readings Fluctuate</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/shah.png" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">Aizat Hamizan</a>
+      <i class='bx bx-moon change-theme' id='theme-button'></i>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="about section">
+      <span class="section__subtitle">Sensor Insight</span>
+      <h2 class="section__title">Why MPU6050 Readings May Be Inaccurate</h2>
+
+      <div class="about__container container" style="margin-top: 2rem;">
+        <div class="about__data">
+          <div class="about__info">
+            <span class="about__subtitle">#MPU6050 #Gravity #SensorFusion #I2C</span>
+          </div>
+
+          <p class="about__description">
+            The MPU6050 combines an <strong>accelerometer</strong> and a <strong>gyroscope</strong>. But its accelerometer senses not just motion — it always senses <strong>gravity (9.81 m/s²)</strong> even when the device is standing still.
+          </p>
+
+          <p class="about__description">
+            This leads to unexpected or unstable results:
+          </p>
+
+          <ul class="about__description" style="margin-left: 1.5rem;">
+            <li>📍 A flat, stationary sensor still shows ~9.8 m/s² on the Z-axis</li>
+            <li>🔁 If you tilt the sensor, Z value drops and X/Y increases</li>
+            <li>⚠ The sensor thinks you're accelerating when you are not</li>
+          </ul>
+
+          <p class="about__description">
+            This happens because the accelerometer measures **all acceleration** — including Earth's gravity — and it cannot tell the difference between real movement and tilt.
+          </p>
+
+          <p class="about__description">
+            Similarly, the gyroscope reports rotation but suffers from **drift** over time — small errors build up and make orientation readings less reliable without correction.
+          </p>
+
+          <h3 style="margin-top: 2rem;">✅ How to Fix It: Sensor Fusion</h3>
+          <p class="about__description">
+            Use a **sensor fusion algorithm** like:
+          </p>
+
+          <ul class="about__description" style="margin-left: 1.5rem;">
+            <li>🧠 <strong>DMP (Digital Motion Processor)</strong> – built into MPU6050</li>
+            <li>➕ <strong>Complementary Filter</strong> – simple but effective</li>
+            <li>📈 <strong>Kalman Filter</strong> – advanced, precise orientation tracking</li>
+          </ul>
+
+          <p class="about__description">
+            These methods combine accelerometer and gyro data, cancel out gravity distortion, and provide accurate roll/pitch/yaw.
+          </p>
+
+          <p class="about__description">
+        <strong>In my case</strong>, I improved the accuracy by manually subtracting <strong>9.41 m/s²</strong> from the Z-axis reading of the accelerometer. Since gravity is always affecting the vertical axis, this helps normalize the data when the sensor is in a stable upright position.
+        </p>
+
+        <p class="about__description">
+        However, this method is only reliable when the MPU6050 is consistently oriented. For dynamic movement or tilt detection, sensor fusion is still required to distinguish between gravity and actual acceleration.
+        </p>
+
+
+          <!-- Optional: Simple Illustration -->
+          <!-- <img src="assets/img/mpu-tilt-diagram.png" alt="MPU6050 Gravity Effect" style="width: 100%; max-width: 500px; display: block; margin: 2rem auto; border-radius: 12px;" />
+
+          <a href="codes/mpu6050-dmp6.ino" download class="button" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> DMP6 Example Code
+          </a> -->
+
+
+        <br>
+        <h4 style="text-align: center; color: var(--title-color); margin-top: 1rem;">MPU6050 Explain and Troubleshoot</h4>
+        <video controls style="width: 100%; max-width: 768px; margin: 2rem auto; display: block; border-radius: 12px;">
+            <source src="assets/video/MPU6050.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        <br>
+
+
+          <a href="index.html" class="button" style="margin-top: 2rem;">Back to Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Theme toggle script -->
+  <script>
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+    const darkTheme = 'light-theme';
+    const iconTheme = 'bx-sun';
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+    const getCurrentTheme = () => body.classList.contains(darkTheme) ? 'light' : 'dark';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
+    if (selectedTheme) {
+      body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+  </script>
+
+</body>
+</html>

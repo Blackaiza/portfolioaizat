@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GPS Accuracy Testing</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/shah.png" type="image/x-icon" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">Aizat Hamizan</a>
+      <i class='bx bx-moon change-theme' id='theme-button'></i>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <section class="about section" id="about">
+      <span class="section__subtitle">What I Do</span>
+      <h2 class="section__title">GPS Accuracy Testing</h2>
+
+      <!-- Project Description -->
+      <div class="about__container container" style="margin-top: 2rem;">
+        <div class="about__data">
+          <div class="about__info">
+            <span class="about__subtitle">#GPS #Ublox #OLED #uCenter</span>
+          </div>
+
+        <!-- Source Code button -->
+          <a href="assets/codes/gps-oled.ino" download class="button" style="margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> GPS OLED Code
+          </a>
+
+          <br>
+          <br>
+
+          <p class="about__description">
+            This project explores the accuracy and performance of a <strong>GPS Module (u-blox NEO-6M)</strong> connected to an <strong>ESP32</strong> microcontroller and a <strong>0.96" OLED display</strong>. The goal was to evaluate the GPS sensor’s real-world positioning performance and visually output latitude/longitude data.
+          </p>
+
+          <p class="about__description">
+            The GPS data is displayed live on the OLED using the <strong>Adafruit SSD1306</strong> library. Readings include latitude, longitude, speed (in km/h), and number of satellites. Communication is done via UART at 9600 baud.
+          </p>
+
+          <p class="about__description">
+            To verify and analyze GPS accuracy, I connected the sensor directly to a laptop via FTDI and used the official <strong>u-blox u-center</strong> software. This desktop application provides:
+          </p>
+
+          <ul class="about__description" style="margin-left: 1.5rem;">
+            <li>📍 Real-time tracking of GPS coordinates</li>
+            <li>📊 Visualization of satellite fix strength (SNR)</li>
+            <li>📡 Ground track, positional error, and altitude plotting</li>
+            <li>📁 Data logging in CSV/NMEA format for offline analysis</li>
+            <li>🛰 Satellite constellation map to check visibility and fix stability</li>
+          </ul>
+
+          <p class="about__description">
+            In open-sky conditions, the GPS was able to lock 6–10 satellites and deliver location readings with accuracy between <strong>2.5–5 meters</strong>. Cold-start time averaged ~35 seconds; warm-start was under 10 seconds.
+          </p>
+
+          <p class="about__description">
+            This project deepened my understanding of GNSS systems, serial communication, and embedded display integration.
+          </p>
+
+          <!-- Optional video embed -->
+          <video controls style="width: 100%; max-width: 768px; margin: 2rem auto; display: block; border-radius: 12px;">
+            <source src="assets/video/GPS1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+             <h4 style="text-align: center; color: var(--title-color); margin-top: 1rem;">GPS Module NEO-6M Using U-Blox Center</h4>
+        <video controls style="width: 100%; max-width: 768px; margin: 2rem auto; display: block; border-radius: 12px;">
+            <source src="assets/video/GPS2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <br>
+
+          <a href="index.html" class="button" style="margin-top: 1rem;">Back to Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Theme & Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+    const darkTheme = 'light-theme';
+    const iconTheme = 'bx-sun';
+
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+
+    const getCurrentTheme = () => body.classList.contains(darkTheme) ? 'light' : 'dark';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
+
+    if (selectedTheme) {
+      body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+  </script>
+
+</body>
+</html>

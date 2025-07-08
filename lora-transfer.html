@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LoRa Transfer: KPZ → FTSM</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/shah.png" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">Aizat Hamizan</a>
+      <i class='bx bx-moon change-theme' id='theme-button'></i>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="about section">
+      <span class="section__subtitle">Long Range IoT</span>
+      <h2 class="section__title">LoRa Transfer: KPZ → FTSM (UKM)</h2>
+
+      <!-- Swiper for Images -->
+      <div class="swiper loraSwiper Center" style="max-width: 768px; margin: 2rem auto;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="assets/img/LORA1.jpeg" class="about__img" alt="LoRa Setup" /></div>
+          <!-- <div class="swiper-slide"><img src="assets/img/lora2.jpg" class="about__img" alt="FTSM Receiver" /></div>
+          <div class="swiper-slide"><img src="assets/img/lora3.jpg" class="about__img" alt="KPZ Transmitter" /></div> -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="about__container container" style="margin-top: 2rem;">
+        <div class="about__data">
+          <div class="about__info">
+            <span class="about__subtitle">#LoRa #UKM #KPZ #FTSM #SX1278</span>
+          </div>
+            <br>
+          <!-- GitHub Button -->
+          <!-- <a href="https://github.com/yourusername/lora-transfer" target="_blank" class="button" style="margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class='bx bxl-github' style="font-size: 1.2rem;"></i> View on GitHub
+          </a> -->
+
+          <!-- Download Code Button -->
+          <a href="assets/codes/Test_Master_Lora.ino" download class="button" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> Trasmitter LoRa Code
+          </a>
+
+         <a href="assets/codes/Test_Slave_Lora.ino" download class="button" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class='bx bx-code-alt' style="font-size: 1.2rem;"></i> Receiver LoRa Code
+          </a>
+            <br>
+            <br>
+          <p class="about__description">
+            This project demonstrates long-range data transmission using <strong>LoRa LR-01</strong> modules between KPZ and FTSM at Universiti Kebangsaan Malaysia (UKM). A transmitter placed at KPZ sends environmental sensor data to a receiver located at FTSM.
+          </p>
+
+          <p class="about__description">
+            Using ESP32 and Arduino framework, the modules were programmed to send and receive messages while capturing <strong>RSSI (Received Signal Strength Indicator)</strong> values for signal quality analysis.
+          </p>
+
+          <ul class="about__description" style="margin-left: 1.5rem;">
+            <li>📍 Distance: ~650m Line-of-sight</li>
+            <li>📡 LoRa Frequency: 433 MHz</li>
+            <li>📊 RSSI Range: -87 to -93 dBm</li>
+            <li>🔋 Powered by 18650 battery and TP4056 charger</li>
+            <li>📦 Data sent: temperature, voltage, GPS location</li>
+          </ul>
+
+          <!-- RSSI Chart -->
+          <h3 style="margin-top: 3rem; text-align: center;">📶 Live RSSI Test Graph</h3>
+          <canvas id="rssiChart" style="max-width: 768px; margin: 1rem auto; display: block;"></canvas>
+
+        <br>
+        <h4 style="text-align: center; color: var(--title-color); margin-top: 1rem;">Lora Testing</h4>
+        <video controls style="width: 100%; max-width: 768px; margin: 2rem auto; display: block; border-radius: 12px;">
+            <source src="assets/video/LORA1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <br>
+
+          <a href="index.html" class="button" style="margin-top: 2rem;">Back to Portfolio</a>
+        </div>
+
+        <!-- <br>
+        <br>
+        <h4 style="text-align: center; color: var(--title-color); margin-top: 1rem;">Lora Testing</h4>
+        <video controls style="width: 100%; max-width: 768px; margin: 2rem auto; display: block; border-radius: 12px;">
+            <source src="assets/video/LORA1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video> -->
+      </div>
+    </section>
+  </main>
+
+  <!-- JS: Theme, Swiper, Chart -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    // Swiper Init
+    var swiper = new Swiper(".loraSwiper", {
+      loop: true,
+      grabCursor: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // Theme toggle
+    const themeButton = document.getElementById('theme-button');
+    const body = document.body;
+    const darkTheme = 'light-theme';
+    const iconTheme = 'bx-sun';
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+    const getCurrentTheme = () => body.classList.contains(darkTheme) ? 'light' : 'dark';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-sun' : 'bx-moon';
+    if (selectedTheme) {
+      body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme);
+      themeButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+    themeButton.addEventListener('click', () => {
+      body.classList.toggle(darkTheme);
+      themeButton.classList.toggle(iconTheme);
+      localStorage.setItem('selected-theme', getCurrentTheme());
+      localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+
+    // RSSI Chart (Sample Data)
+    const ctx = document.getElementById('rssiChart').getContext('2d');
+    const rssiChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['T1', 'T2', 'T3', 'T4', 'T5'],
+        datasets: [{
+          label: 'RSSI (dBm)',
+          data: [-90, -88, -91, -93, -87],
+          backgroundColor: 'rgba(33,150,243,0.2)',
+          borderColor: '#2196F3',
+          borderWidth: 2,
+          tension: 0.4,
+          fill: true,
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: 'Signal Strength (dBm)'
+            },
+            suggestedMin: -100,
+            suggestedMax: -70
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Time (samples)'
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
